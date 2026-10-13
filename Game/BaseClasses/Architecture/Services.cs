@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GameBase.Input;
 using GameBase.Assets;
+using GameBase.Dialouge;
 
 namespace GameBase;
 
@@ -14,12 +15,14 @@ public static class Services
     public static InputManager Input { get; private set; }
     public static SpriteLibrary Sprites { get; private set; }
     public static GameInfoManager GameInfo { get; private set; }
+    public static DialougeManager Dialouge { get; private set; }
 
-    public static void Initalize(InputManager input, SpriteLibrary sprites, GameInfoManager gameI)
+    public static void Initalize(InputManager input, SpriteLibrary sprites, GameInfoManager gameI, DialougeManager dManager)
     {
         Input = input;
         Sprites = sprites;
         GameInfo = gameI;
+        Dialouge = dManager;
     }
-
+    
 }

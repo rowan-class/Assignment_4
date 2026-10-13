@@ -29,6 +29,7 @@ public interface ICollidable
     void OnCollision(ICollidable other);
     void OnCollisionEnter(ICollidable other);
     void OnCollisionExit(ICollidable other);
+    //i should convert this into events
     //each object can manage it's reaction to collisions
     Layer layer { get; }
 }

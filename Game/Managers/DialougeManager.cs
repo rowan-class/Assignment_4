@@ -12,7 +12,6 @@ namespace GameBase.Dialouge;
 public class DialougeManager
 {
     public static DialougeUI dialougeUI;
-    public static event Action<Character> OnDialogueComplete;
     private DialougeInfo dinfo;
     bool isTyping;
     string temptxt;
@@ -21,19 +20,19 @@ public class DialougeManager
     int visChars;
 
 
-    public DialougeManager() {
+    public DialougeManager(InputManager inputManager) {
         //idk init here
         dialougeUI = new();
-        //inputActions.Dialouge.Click.performed += OnClick;
-        //inputActions.Dialouge.ProgressDialouge.performed += OnClick;
-        //inputActions.Dialouge.Exit.performed += OnDialougeExit;
-
+        inputManager.ActionPressed += SkipDialouge;
+        dialougeUI.SetActive(false);
     }
     public void DialougeSetup(DialougeInfo info) {
         dinfo = info;
         dinfo.ResetIndex();
-        UpdateDialouge();
         dialougeUI.SetActive(true);
+        Services.Input.UpdateActionMap(InputActionMap.Dialogue);
+        UpdateDialouge();
+        
     }
 
     public void UpdateDialouge() {
@@ -41,17 +40,18 @@ public class DialougeManager
         {
             return;
         }
-        dialougeUI.UpdateDialougeLine(dinfo.GetDialougeLine());
         temptxt = dinfo.GetDialouge();
         if (temptxt == null)
         {
             dialougeUI.SetActive(false);
-            OnDialogueComplete?.Invoke(dinfo.character);
+            EventSystem.DialougeComplete(dinfo);
+            Services.Input.UpdateActionMap(InputActionMap.Gameplay);
             return;
         }
         else
         {
             StartTypewriter(dinfo.GetDialouge());
+            dialougeUI.UpdateDialougeLine(dinfo.GetDialougeLine());
         }
     }
     void StartTypewriter(string text) {
@@ -97,5 +97,20 @@ public class DialougeManager
 
         typingTimer = 0;
         isTyping = false;
+    }
+    public void SkipDialouge(GameAction action) {
+        if (!dialougeUI.activeSelf || Services.Input.inputActionMap != InputActionMap.Dialogue) {
+            return;
+        }
+        if (action == GameAction.ProgressDialouge) {
+            if (isTyping)
+            {
+                FinishTyping();
+            }
+            else {
+                dinfo.IncrementIndex();
+                UpdateDialouge();
+            }
+        } 
     }
 }

@@ -8,6 +8,7 @@ using System;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection.Metadata;
+using GameBase.Dialouge;
 
 namespace GameBase;
 
@@ -24,7 +25,7 @@ public class Main
         var gameInfo = new GameInfoManager(content);
         var inputManager = new InputManager();
         //UIManager = new UIManager(content);
-        Services.Initalize(inputManager, sprites, gameInfo);
+        Services.Initalize(inputManager, sprites, gameInfo, new DialougeManager(inputManager));
         //simplify sprite loading? 
         gameInfo.InitItemList();
 
@@ -38,6 +39,7 @@ public class Main
         ScreenBounds = screenBounds;
         sceneManager.Update(gameTime);
         Services.Input.Update(gameTime);
+        Services.Dialouge.Update(gameTime);
         CollisionManager.Instance.Update(gameTime);
         //UIManager.Update(gameTime);
     }

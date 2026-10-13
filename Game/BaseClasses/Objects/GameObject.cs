@@ -18,7 +18,7 @@ public class GameObject
     //readonly mainly for pooling
     private string spriteName;
     //getting sprite file/loading?
-    private string name;
+    public string name { get; protected set; }
     // identifier 
     public Sprite sprite { get; protected set; }
 

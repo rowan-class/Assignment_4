@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameBase.Dialouge;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
@@ -11,37 +12,43 @@ namespace GameBase;
 public class NPC : GameObject, ICollidable, IInteractable
 {
     //other interfaces like iinteractable can also be implemented here
-    public NPC(ContentManager content, string spriteName, string name, Scene owner) : base(content, spriteName, name, owner)
-    {
-        //update sprites, animated sprites and then size in here
 
-    }
+    public Rectangle BoxCollider =>  new Rectangle((int)transform.position.X, (int)transform.position.Y, (int)transform.scale.X, (int)transform.scale.Y);
 
-    public Rectangle BoxCollider
-    {
-        get
-        {
-            return new Rectangle((int)transform.position.X, (int)transform.position.Y, (int)transform.scale.X, (int)transform.scale.Y);
-        }
-    }
-
-    public bool IsTrigger { get; protected set; } = true;
+    public bool IsTrigger { get; protected set; } = false;
 
     public bool ColliderIsActive { get; protected set; } = true;
 
-    Layer ICollidable.layer { get;} = Layer.Default;
+    Layer ICollidable.layer { get;} = Layer.Interactable;
 
-    public bool CanInteract => throw new NotImplementedException();
+    public bool CanInteract { get; protected set; } = true;
+
+    public string ID => name;
+
+    public Character character = Character.NPC1;
+    readonly List<DialougeInfo> dialougeInfoList;
+
+
+    public NPC(ContentManager content, string spriteName, string name, Scene owner) : base(content, spriteName, name, owner)
+    {
+        //update sprites, animated sprites and then size in here
+        Services.Dialouge.OnDialogueComplete += DialougeComplete;
+
+    }
 
     public override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
     }
 
+    public void DialougeComplete(Character c) {
+        if (character != c) { return; }
+
+    }
 
     public void OnCollision(ICollidable other)
     {
-        throw new NotImplementedException();
+
     }
 
     public void OnCollisionEnter(ICollidable other)
@@ -56,6 +63,6 @@ public class NPC : GameObject, ICollidable, IInteractable
 
     public void Interact(GameObject player)
     {
-        throw new NotImplementedException();
+        
     }
 }
