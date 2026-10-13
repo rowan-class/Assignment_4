@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<NPCInfo>
+	<NPC>
+		<Character>NPC1</Character>
+		<DialogueIDs>
+			<ID> </ID>
+		
+		</DialogueIDs>
+	</NPC>
+
+	<NPC>
+		<Character>NPC2</Character>
+		<DialogueIDs>
+			<ID></ID>
+
+		</DialogueIDs>
+	</NPC>
+
+</NPCInfo>

@@ -1,4 +1,4 @@
-﻿using GameBase.Dialouge;
+﻿using GameBase.Dialogue;
 using Gum.Forms.Controls;
 using Gum.GueDeriving;
 using Gum.Wireframe;
@@ -10,22 +10,22 @@ using System.Threading.Tasks;
 
 namespace BaseTemplate.Game.UI
 {
-    public class DialougeUI 
+    public class DialogueUI 
     {
         private Panel Root = new();
         SpriteRuntime backgroundPanel;
-        RectangleRuntime dialougePanel;
+        RectangleRuntime dialoguePanel;
         SpriteRuntime spritePanel;
         RectangleRuntime namePanel;
         Label name;
-        Label dialouge;
+        Label dialogue;
         public bool activeSelf { get; private set; } = false;
 
-        public DialougeUI() {
+        public DialogueUI() {
             //init here
             Init();
         }
-        //this shouldn't count as scene UI imo, any scene that has dialouge should contain one of these?
+        //this shouldn't count as scene UI imo, any scene that has dialogue should contain one of these?
 
         public void Init() {
             Root.Dock(Dock.Fill);
@@ -34,31 +34,31 @@ namespace BaseTemplate.Game.UI
             backgroundPanel.Dock(Dock.Fill);
             Root.AddChild(backgroundPanel);
 
-            dialougePanel = new RectangleRuntime();
-            dialougePanel.IsFilled = true;
-            dialougePanel.FillAlpha = 230;
+            dialoguePanel = new RectangleRuntime();
+            dialoguePanel.IsFilled = true;
+            dialoguePanel.FillAlpha = 230;
 
-            dialougePanel.HeightUnits = Gum.DataTypes.DimensionUnitType.PercentageOfParent;
-            dialougePanel.Dock(Dock.Bottom);
-            dialougePanel.Height = 30;
-            Root.AddChild(dialougePanel);
+            dialoguePanel.HeightUnits = Gum.DataTypes.DimensionUnitType.PercentageOfParent;
+            dialoguePanel.Dock(Dock.Bottom);
+            dialoguePanel.Height = 30;
+            Root.AddChild(dialoguePanel);
 
-            Panel dialougeBox = new Panel();
-            dialougePanel.AddChild(dialougeBox);
-            dialougeBox.Dock(Dock.Fill);
-            dialougeBox.Height = -16;
-            dialougeBox.Width = -16;
+            Panel dialogueBox = new Panel();
+            dialoguePanel.AddChild(dialogueBox);
+            dialogueBox.Dock(Dock.Fill);
+            dialogueBox.Height = -16;
+            dialogueBox.Width = -16;
 
 
-            dialouge = new Label();
-            dialougeBox.AddChild(dialouge);
-            dialouge.Anchor(Anchor.TopLeft);
-            dialouge.Visual.WidthUnits = Gum.DataTypes.DimensionUnitType.PercentageOfParent;
-            dialouge.Width = 100;
-            dialouge.Text = "Dialouge goes here";
+            dialogue = new Label();
+            dialogueBox.AddChild(dialogue);
+            dialogue.Anchor(Anchor.TopLeft);
+            dialogue.Visual.WidthUnits = Gum.DataTypes.DimensionUnitType.PercentageOfParent;
+            dialogue.Width = 100;
+            dialogue.Text = "Dialogue goes here";
 
             spritePanel = new SpriteRuntime();
-            dialougePanel.AddChild(spritePanel);
+            dialoguePanel.AddChild(spritePanel);
             spritePanel.Anchor(Anchor.TopRight);
             spritePanel.YOrigin = RenderingLibrary.Graphics.VerticalAlignment.Bottom;
             spritePanel.X = -16; 
@@ -70,7 +70,7 @@ namespace BaseTemplate.Game.UI
 
 
             namePanel = new RectangleRuntime();
-            dialougePanel.AddChild(namePanel);
+            dialoguePanel.AddChild(namePanel);
             namePanel.IsFilled = true;
             namePanel.Anchor(Anchor.TopLeft);
             namePanel.YOrigin = RenderingLibrary.Graphics.VerticalAlignment.Bottom;
@@ -97,8 +97,8 @@ namespace BaseTemplate.Game.UI
         public void SetName(string n) {
             name.Text = n;
         }
-        public void SetDialouge(string d) {
-            dialouge.Text = d;
+        public void SetDialogue(string d) {
+            dialogue.Text = d;
         }
         public void SetBackground( Sprite bg) {
             backgroundPanel.Texture = bg.Region.Texture;
@@ -108,11 +108,16 @@ namespace BaseTemplate.Game.UI
         }
 
         public void SetSprite(Sprite s) {
-            spritePanel.Texture = s.Region.Texture;
-            //this only holds unanimated stuff rn work in laater?
+            if (s == null) { spritePanel.Visible = false; }
+            else
+            {
+                spritePanel.Texture = s.Region.Texture;
+                //this only holds unanimated stuff rn work in laater?
+                spritePanel.Visible = true;
+            }
         }
 
-        public void UpdateDialougeLine(DialougeLine d) {
+        public void UpdateDialogueLine(DialogueLine d) {
             if (d.background == null)
             {
                 ToggleBackgroundOn(false);
@@ -121,7 +126,7 @@ namespace BaseTemplate.Game.UI
                 SetBackground(d.background);
                 ToggleBackgroundOn(true);
             }
-            SetDialouge(d.dialouge);
+            SetDialogue(d.dialogue);
             SetSprite(d.sprite);
             SetName(d.Name);
         }
@@ -139,7 +144,7 @@ namespace BaseTemplate.Game.UI
 
         public void SetVisibleCharacters(int count)
         {
-            TextRuntime text = (TextRuntime)dialouge.TextComponent;
+            TextRuntime text = (TextRuntime)dialogue.TextComponent;
             text.MaxLettersToShow = count;
         }
     }

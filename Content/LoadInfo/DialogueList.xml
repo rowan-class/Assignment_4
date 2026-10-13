@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DialogueInfoList>
+	<DialogueInfo>
+		<Character>NPC1</Character>
+		<DialogueLines>
+			<Line>
+				<Name></Name>
+				<Dialogue></Dialogue>
+				<Sprite></Sprite>
+			</Line>
+
+			<Line>
+				<Name></Name>
+				<Dialogue></Dialogue>
+				<Sprite></Sprite>
+			</Line>
+
+			<Line>
+				<Name></Name>
+				<Dialogue></Dialogue>
+				<Sprite></Sprite>
+			</Line>
+			
+		</DialogueLines>
+		<Advance>true</Advance>
+		<ID></ID>
+	</DialogueInfo>
+
+	<DialogueInfo>
+		<Character>NPC1</Character>
+		<DialogueLines>
+			<Line>
+				<Name></Name>
+				<Dialogue></Dialogue>
+				<Sprite></Sprite>
+			</Line>
+
+			<Line>
+				<Name></Name>
+				<Dialogue></Dialogue>
+				<Sprite></Sprite>
+			</Line>
+
+			<Line>
+				<Name></Name>
+				<Dialogue></Dialogue>
+				<Sprite></Sprite>
+			</Line>
+
+		</DialogueLines>
+		<Advance>false</Advance>
+		<ID></ID>
+	</DialogueInfo>
+
+	<DialogueInfo>
+		<Character>NPC2</Character>
+		<DialogueLines>
+			<Line>
+				<Name></Name>
+				<Dialogue></Dialogue>
+				<Sprite></Sprite>
+			</Line>
+
+			<Line>
+				<Name></Name>
+				<Dialogue></Dialogue>
+				<Sprite></Sprite>
+			</Line>
+
+			<Line>
+				<Name></Name>
+				<Dialogue></Dialogue>
+				<Sprite></Sprite>
+			</Line>
+
+		</DialogueLines>
+		<Advance>true</Advance>
+		<ID></ID>
+	</DialogueInfo>
+</DialogueInfoList>

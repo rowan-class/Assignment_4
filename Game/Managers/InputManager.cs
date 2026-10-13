@@ -1,4 +1,4 @@
-﻿using GameBase.Dialouge;
+﻿using GameBase.Dialogue;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -36,9 +36,9 @@ public class InputManager
     };
     //contents can still change. dict itself cannot.
 
-    private readonly Dictionary<GameAction, List<Keys>> _dialougeKeys = new()
+    private readonly Dictionary<GameAction, List<Keys>> _dialogueKeys = new()
     {
-        [GameAction.ProgressDialouge] = new List<Keys> { Keys.Space, Keys.Enter }
+        [GameAction.ProgressDialogue] = new List<Keys> { Keys.Space, Keys.Enter }
         //ALLOW FOR MOUSE CLICKING LATER
     };
 
@@ -52,7 +52,7 @@ public class InputManager
         Keyboard = new KeyboardInfo();
         Mouse = new MouseInfo();
         ActionMap[InputActionMap.Gameplay] = _actionKeys;
-        ActionMap[InputActionMap.Dialogue] = _dialougeKeys;
+        ActionMap[InputActionMap.Dialogue] = _dialogueKeys;
 
     }
 

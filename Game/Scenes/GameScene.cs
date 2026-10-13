@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GameBase;
 
-public class BasicGameScene : Scene
+public class GameScene : Scene
 {
     //private readonly TiledMap ground;
     //List<ICollidable> tileColliders = new();
@@ -20,7 +20,7 @@ public class BasicGameScene : Scene
     //private readonly Player player;
     //public IReadOnlyList<SpawnInfo> Spawns { get; }
     // references to a tilemap & player if we using either
-    public BasicGameScene(ContentManager content) : base(content)
+    public GameScene(ContentManager content) : base(content)
     {
         //load level here. 
         //LevelData level = Tilemap.LoadLevel(content, "Level1TileMap.xml");

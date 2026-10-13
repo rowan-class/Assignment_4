@@ -1,4 +1,4 @@
-﻿using GameBase.Dialouge;
+﻿using GameBase.Dialogue;
 using GameBase.Items;
 using Microsoft.Xna.Framework.Content;
 using System;
@@ -19,11 +19,11 @@ public class GameInfoManager
     //for item picksups probs wont be used here
     public HashSet<string> interactedItems = new HashSet<string>();
     public HashSet<string> collectedItems = new HashSet<string>();
-    public HashSet<string> completedDialouge = new HashSet<string>();
+    public HashSet<string> completedDialogue = new HashSet<string>();
     public HashSet<Character> talkedToNPCs = new HashSet<Character>();
     public GameInfoManager(ContentManager content)
     {
-        EventSystem.OnDialougeComplete += DialougeComplete;
+        EventSystem.OnDialogueComplete += DialogueComplete;
         EventSystem.OnInteract += HandleInteract;
         EventSystem.OnPickup += HandlePickup;
         EventSystem.OnNPCInteract += HandleNPCInteract;
@@ -42,13 +42,13 @@ public class GameInfoManager
     public void Reset() {
         npcDialogueProgress.Clear();
         interactedItems.Clear();
-        completedDialouge.Clear();
+        completedDialogue.Clear();
         talkedToNPCs.Clear();
     }
-    void DialougeComplete(DialougeInfo dInfo) {
-        //add to completed dialouge
-        //have this pass the dialouge info instead
-        completedDialouge.Add(dInfo.ID);
+    void DialogueComplete(DialogueInfo dInfo) {
+        //add to completed dialogue
+        //have this pass the dialogue info instead
+        completedDialogue.Add(dInfo.ID);
         if (dInfo.advancesProgress) {
             AdvanceDialogue(dInfo.character);
         }

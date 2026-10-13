@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameBase.Dialouge;
+namespace GameBase.Dialogue;
 
 public enum Character
 {

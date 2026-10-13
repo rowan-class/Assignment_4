@@ -1,4 +1,4 @@
-﻿using GameBase.Dialouge;
+﻿using GameBase.Dialogue;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System;
@@ -26,7 +26,7 @@ public class NPC : GameObject, ICollidable, IInteractable
     public string ID => name;
 
     public Character character = Character.NPC1;
-    readonly List<DialougeInfo> dialougeInfoList;
+    readonly List<DialogueInfo> dialogueInfoList;
 
 
     public NPC(ContentManager content, string spriteName, string name, Scene owner) : base(content, spriteName, name, owner)
@@ -62,9 +62,9 @@ public class NPC : GameObject, ICollidable, IInteractable
             EventSystem.NPCInteract(character);
             EventSystem.Interact(ID);
             int index = Services.GameInfo.GetDialogueIndex(character);
-            if (index < dialougeInfoList.Count)
+            if (index < dialogueInfoList.Count)
             {
-                Services.Dialouge.DialougeSetup(dialougeInfoList[index]);
+                Services.Dialogue.DialogueSetup(dialogueInfoList[index]);
             }
         }        
     }

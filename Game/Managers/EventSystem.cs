@@ -1,4 +1,4 @@
-﻿using GameBase.Dialouge;
+﻿using GameBase.Dialogue;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ public static class EventSystem
 {
     public static event Action<string> OnInteract;
     public static event Action<string> OnPickup;
-    public static event Action<DialougeInfo> OnDialougeComplete;
+    public static event Action<DialogueInfo> OnDialogueComplete;
     public static event Action<Character> OnNPCInteract;
     //global events that the GameInfoManager can like subscribe to, so a reference isnt needed.
     public static void Interact(string ID) {
@@ -21,9 +21,9 @@ public static class EventSystem
     {
         OnPickup?.Invoke(ID);
     }
-    public static void DialougeComplete(DialougeInfo dialougeInfo)
+    public static void DialogueComplete(DialogueInfo dialogueInfo)
     {
-        OnDialougeComplete?.Invoke(dialougeInfo);
+        OnDialogueComplete?.Invoke(dialogueInfo);
     }
     public static void NPCInteract(Character c) {
         OnNPCInteract?.Invoke(c);

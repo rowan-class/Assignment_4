@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ItemInfo>
+	<Item>
+		<Name>Knife</Name>
+		<Type>Weapon</Type>
+		<Sprite></Sprite>
+	</Item>
+
+	<Item>
+		<Name>Autospy Report</Name>
+		<Type>Document</Type>
+		<Sprite></Sprite>
+	</Item>
+</ItemInfo>
