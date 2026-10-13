@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace GameBase;
 
-public class BasicSolidGameObject : GameObject, ICollidable
+public class NPC : GameObject, ICollidable, IInteractable
 {
     //other interfaces like iinteractable can also be implemented here
-    public BasicSolidGameObject(ContentManager content, string spriteName, string name, Scene owner) : base(content, spriteName, name, owner)
+    public NPC(ContentManager content, string spriteName, string name, Scene owner) : base(content, spriteName, name, owner)
     {
         //update sprites, animated sprites and then size in here
 
@@ -31,6 +31,8 @@ public class BasicSolidGameObject : GameObject, ICollidable
 
     Layer ICollidable.layer { get;} = Layer.Default;
 
+    public bool CanInteract => throw new NotImplementedException();
+
     public override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
@@ -48,6 +50,11 @@ public class BasicSolidGameObject : GameObject, ICollidable
     }
 
     public void OnCollisionExit(ICollidable other)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Interact(GameObject player)
     {
         throw new NotImplementedException();
     }
