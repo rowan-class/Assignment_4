@@ -37,7 +37,9 @@ public class Inventory
         Services.Input.ActionPressed += InventoryToggle;
     }
     public void AddAllItemInfo(List<ItemInfo> infos) {
-        items = infos;
+        foreach (ItemInfo info in infos) {
+            itemList[info.ID] = info;
+        }
     }
     public ItemInfo GetItem(ItemInfo info)
     {

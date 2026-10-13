@@ -18,7 +18,7 @@ public abstract class Item : GameObject, ICollidable, IInteractable
 
     public bool IsTrigger => true;
 
-    public string ID => Info.ID;
+    public string ID { get; protected set; }
 
 
     //should i have a data container for items? like a scriptable object? 

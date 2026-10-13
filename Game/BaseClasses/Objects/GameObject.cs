@@ -33,7 +33,7 @@ public class GameObject
     {
         this.spriteName = spriteName;
         this.name = name;
-        sprite = new Sprite(owner.atlas.GetRegion(spriteName));
+        sprite = Services.Sprites.CreateSprite(spriteName);
         ownerScene = owner;
     }
 

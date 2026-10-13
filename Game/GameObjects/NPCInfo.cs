@@ -1,4 +1,4 @@
-﻿using GameBase.Dialogue;
+using GameBase.Dialogue;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System;
@@ -14,10 +14,12 @@ namespace GameBase;
 public class NPCInfo
 {
     public Character character;
+    public string spriteName { get; }
     public List<string> dialogueIDOrder = new();
 
-    public NPCInfo(Character c, List<string> order) {
+    public NPCInfo(Character c, List<string> order, string spriteName = null) {
         character = c;
+        this.spriteName = spriteName;
         dialogueIDOrder = order;
     }
 
@@ -32,11 +34,12 @@ public class NPCInfo
             {
                 string c = (string)npcElement.Element("Character");
                 Character ch = (Character)Enum.Parse(typeof(Character), c);
+                string spriteName = ((string)npcElement.Element("Sprite"))?.Trim();
                 List<string> idList = new();
                 foreach (XElement ID in npcElement.Element("DialogueIDs").Elements("ID")) {
-                    idList.Add((string)ID);
+                    idList.Add(((string)ID).Trim());
                 }
-                npcDefs.Add(new NPCInfo(ch, idList));
+                npcDefs.Add(new NPCInfo(ch, idList, spriteName));
             }
         }
 

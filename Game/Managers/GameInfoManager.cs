@@ -24,6 +24,7 @@ public class GameInfoManager
     public HashSet<Character> talkedToNPCs = new HashSet<Character>();
     List<DialogueInfo> definitions;
     public Dictionary<string, DialogueInfo> dialogueById { get; private set; }=  new();
+    public Dictionary<Character, NPCInfo> npcByCharacter { get; } = new();
     public GameInfoManager(ContentManager content)
     {
         EventSystem.OnDialogueComplete += DialogueComplete;
@@ -49,6 +50,12 @@ public class GameInfoManager
             dialogueById.Add(info.ID, info);
         }
     }
+    public void InitNPCDefinitions(ContentManager content) {
+        foreach (NPCInfo info in NPCInfo.FromFile(content, "LoadInfo/NPCDefinitions.xml")) {
+            npcByCharacter.Add(info.character, info);
+        }
+    }
+
     public void Reset() {
         npcDialogueProgress.Clear();
         interactedItems.Clear();

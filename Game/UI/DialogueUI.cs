@@ -36,6 +36,9 @@ namespace BaseTemplate.Game.UI
 
             dialoguePanel = new RectangleRuntime();
             dialoguePanel.IsFilled = true;
+            dialoguePanel.FillRed = 28;
+            dialoguePanel.FillGreen = 32;
+            dialoguePanel.FillBlue = 42;
             dialoguePanel.FillAlpha = 230;
 
             dialoguePanel.HeightUnits = Gum.DataTypes.DimensionUnitType.PercentageOfParent;
@@ -72,9 +75,12 @@ namespace BaseTemplate.Game.UI
             namePanel = new RectangleRuntime();
             dialoguePanel.AddChild(namePanel);
             namePanel.IsFilled = true;
+            namePanel.FillRed = 28;
+            namePanel.FillGreen = 32;
+            namePanel.FillBlue = 42;
             namePanel.Anchor(Anchor.TopLeft);
             namePanel.YOrigin = RenderingLibrary.Graphics.VerticalAlignment.Bottom;
-            namePanel.Y = 20;
+            namePanel.Y = 5;
             namePanel.X = -16;
             namePanel.WidthUnits = Gum.DataTypes.DimensionUnitType.RelativeToChildren;
             namePanel.HeightUnits = Gum.DataTypes.DimensionUnitType.RelativeToChildren;

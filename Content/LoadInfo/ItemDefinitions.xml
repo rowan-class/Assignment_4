@@ -3,14 +3,15 @@
 	<Item>
 
 		<Name>Knife</Name>
+		<ID>knife</ID>
 		<Type>Weapon</Type>
-		<Sprite></Sprite>
+		<Sprite>ChudAtlas.Chud</Sprite>
 	</Item>
 
 	<Item>
 		<ID>Autopsy Report</ID>
 		<Name>Autopsy Report</Name>
 		<Type>Document</Type>
-		<Sprite></Sprite>
+		<Sprite>MeowAtlas.meow</Sprite>
 	</Item>
 </ItemInfo>

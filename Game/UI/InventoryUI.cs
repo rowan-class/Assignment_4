@@ -42,24 +42,12 @@ public class InventoryUI
         background.FillBlue = 42;
         background.FillAlpha = 245;
 
-        var title = new Label();
-        background.AddChild(title);
-        title.Anchor(Anchor.TopLeft);
-        title.X = Padding;
-        title.Y = Padding;
-        title.Text = "Inventory";
-
         background.AddChild(slotContainer);
         slotContainer.Anchor(Anchor.TopLeft);
         slotContainer.X = Padding;
         slotContainer.Y = 52;
         slotContainer.Width = Columns * (SlotSize + Gap) - Gap;
 
-        background.AddChild(emptyLabel);
-        emptyLabel.Anchor(Anchor.TopLeft);
-        emptyLabel.X = Padding;
-        emptyLabel.Y = 52;
-        emptyLabel.Text = "empty inv";
     }
 
     void RefreshInventory() {
@@ -99,6 +87,8 @@ public class InventoryUI
                 icon.Texture = region.Texture;
                 icon.TextureAddress = TextureAddress.Custom;
                 icon.SourceRectangle = region.SourceRectangle;
+                icon.WidthUnits = Gum.DataTypes.DimensionUnitType.Absolute;
+                icon.HeightUnits = Gum.DataTypes.DimensionUnitType.Absolute;
 
                 float scale = Math.Min((SlotSize - 16f) / region.Width, (SlotSize - 16f) / region.Height);
 

@@ -31,6 +31,7 @@ public class Main
         //simplify sprite loading? 
         gameInfo.InitItemList(content);
         gameInfo.InitDialogueLines(content);
+        gameInfo.InitNPCDefinitions(content);
         gameInfo.playerInventory.OnEnable();
 
         sceneManager = new SceneManager(content);

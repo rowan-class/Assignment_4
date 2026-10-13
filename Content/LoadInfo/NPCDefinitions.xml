@@ -2,17 +2,22 @@
 <NPCInfo>
 	<NPC>
 		<Character>NPC1</Character>
+		<Sprite>PoroAtlas.Poro</Sprite>
 		<DialogueIDs>
-			<ID> </ID>
+			<ID>npc1_intro</ID>
+			<ID>npc1_followup</ID>
 		
 		</DialogueIDs>
 	</NPC>
 
 	<NPC>
 		<Character>NPC2</Character>
+		<Sprite>WrightAtlas.Wright</Sprite>
 		<DialogueIDs>
-			<ID></ID>
-
+			<ID>npc2_intro</ID>
+			<ID>npc2_followup</ID>
+			<ID>npc2_followup2</ID>
+			<ID>npc2_followup3</ID>
 		</DialogueIDs>
 	</NPC>
 

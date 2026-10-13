@@ -1,4 +1,4 @@
-﻿using GameBase.Assets;
+using GameBase.Assets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using SharpCompress.Common;
@@ -32,13 +32,15 @@ public class ItemInfo
     //public string desc { get; private set; }
     public Sprite sprite { get; private set; }
     public string ID { get; private set; }
-    public ItemInfo(ItemType type, string n, Sprite s, string id)
+    public string spriteName { get; }
+    public ItemInfo(ItemType type, string n, Sprite s, string id, string spriteName = null)
     {
         itemType = type;
         name = n;
         //desc = d;
         sprite = s;
         ID = id;
+        this.spriteName = spriteName;
     }
 
     public void SetSprite(Sprite sprite)
@@ -81,7 +83,7 @@ public class ItemInfo
 
                 ItemType t = (ItemType) Enum.Parse(typeof(ItemType), type);
                 Sprite s= Services.Sprites.CreateSprite(sprite);
-                var x = new ItemInfo(t, name, s, id);
+                var x = new ItemInfo(t, name, s, id, sprite);
                 itemDefs.Add(x);
             }
         }

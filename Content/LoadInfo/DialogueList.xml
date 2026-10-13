@@ -1,80 +1,103 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <DialogueInfoList>
 	<DialogueInfo>
 		<Character>NPC1</Character>
 		<DialogueLines>
 			<Line>
-				<Name></Name>
-				<Dialogue></Dialogue>
-				<Sprite></Sprite>
+				<Name>Poro</Name>
+				<Dialogue>bleh bleh bleh murder skibidi </Dialogue>
+				<Sprite>PoroAtlas.Poro</Sprite>
 			</Line>
 
 			<Line>
-				<Name></Name>
-				<Dialogue></Dialogue>
-				<Sprite></Sprite>
+				<Name>Poro</Name>
+				<Dialogue>go solve bleh bleh belh</Dialogue>
+				<Sprite>PoroAtlas.Poro</Sprite>
 			</Line>
 
-			<Line>
-				<Name></Name>
-				<Dialogue></Dialogue>
-				<Sprite></Sprite>
-			</Line>
-			
 		</DialogueLines>
 		<Advance>true</Advance>
-		<ID></ID>
+		<ID>npc1_intro</ID>
 	</DialogueInfo>
 
 	<DialogueInfo>
 		<Character>NPC1</Character>
 		<DialogueLines>
 			<Line>
-				<Name></Name>
-				<Dialogue></Dialogue>
-				<Sprite></Sprite>
-			</Line>
-
-			<Line>
-				<Name></Name>
-				<Dialogue></Dialogue>
-				<Sprite></Sprite>
-			</Line>
-
-			<Line>
-				<Name></Name>
-				<Dialogue></Dialogue>
-				<Sprite></Sprite>
+				<Name>Poro</Name>
+				<Dialogue>bleh bleh bleh knife and the report are somewhere bleh blhe.</Dialogue>
+				<Sprite>PoroAtlas.Poro</Sprite>
 			</Line>
 
 		</DialogueLines>
 		<Advance>false</Advance>
-		<ID></ID>
+		<ID>npc1_followup</ID>
 	</DialogueInfo>
 
 	<DialogueInfo>
 		<Character>NPC2</Character>
 		<DialogueLines>
 			<Line>
-				<Name></Name>
-				<Dialogue></Dialogue>
-				<Sprite></Sprite>
-			</Line>
-
-			<Line>
-				<Name></Name>
-				<Dialogue></Dialogue>
-				<Sprite></Sprite>
-			</Line>
-
-			<Line>
-				<Name></Name>
-				<Dialogue></Dialogue>
-				<Sprite></Sprite>
+				<Name>blue dude</Name>
+				<Dialogue>sigma dual destines is so long....</Dialogue>
+				<Sprite>WrightAtlas.Wright</Sprite>
 			</Line>
 
 		</DialogueLines>
+		<Advance>false</Advance>
+		<ID>npc2_intro</ID>
+	</DialogueInfo>
+	
+	<DialogueInfo>
+		<Character>NPC2</Character>
+		<DialogueLines>
+			<Line>
+				<Name>blue dude</Name>
+				<Dialogue> oh em gee u found something.</Dialogue>
+				<Sprite>WrightAtlas.Wright</Sprite>
+			</Line>
+
+		</DialogueLines>
+		<Advance>false</Advance>
+		<ID>npc2_followup</ID>
+	</DialogueInfo>
+
+	<DialogueInfo>
+		<Character>NPC2</Character>
+		<DialogueLines>
+			<Line>
+				<Name>blue dude</Name>
+				<Dialogue> oh em gee u found the muder wepon and the other thing</Dialogue>
+				<Sprite>WrightAtlas.Wright</Sprite>
+			</Line>
+
+			<Line>
+				<Name>una</Name>
+				<Dialogue> una yaha!!! una una una una una</Dialogue>
+				<Sprite>PlayerAtlas.Player</Sprite>
+			</Line>
+			<Line>
+				<Name>blue dude</Name>
+				<Dialogue> truth. i cant belive poro kill. im so tired ive been working on this for like 12 hours straight</Dialogue>
+				<Dialogue> i dodnt write murder mystery all i do is play through ace attornye instead</Dialogue>
+				<Dialogue> you did uit congratudaltion i cant topyhe anymore im so tired</Dialogue>
+				<Sprite>WrightAtlas.Wright</Sprite>
+			</Line>
+		</DialogueLines>
 		<Advance>true</Advance>
-		<ID></ID>
+		<ID>npc2_followup2</ID>
+	</DialogueInfo>
+
+	<DialogueInfo>
+		<Character>NPC2</Character>
+		<DialogueLines>
+			<Line>
+				<Name>blue dude</Name>
+				<Dialogue> awsome sauce</Dialogue>
+				<Sprite>WrightAtlas.Wright</Sprite>
+			</Line>
+		</DialogueLines>
+		<Advance>false</Advance>
+		<ID>npc2_followup3</ID>
 	</DialogueInfo>
 </DialogueInfoList>

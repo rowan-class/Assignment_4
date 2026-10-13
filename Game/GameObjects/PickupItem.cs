@@ -1,4 +1,4 @@
-﻿using GameBase.Items;
+using GameBase.Items;
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
@@ -8,17 +8,23 @@ using System.Threading.Tasks;
 
 namespace GameBase;
 
-public class BasicItem : Item
+public class PickupItem : Item
 {
-    public BasicItem(ContentManager content, string spriteName, string name, Scene owner) : base(content, spriteName, name, owner)
+    public PickupItem(ContentManager content, ItemInfo info, string instanceId, Scene owner)
+        : base(content, info.spriteName, info.name, owner)
     { 
-        //assign Info here
+        Info = info;
+        ID = instanceId;
     }
     public override void Interact(GameObject player)
     {
         if (CanInteract)
         {
-            //interact here.
+            Services.GameInfo.playerInventory.AddItem(Info);
+            CanInteract = false;
+            ActiveOnSceneEnter = false;
+            SetActive(false);
+            EventSystem.Pickup(ID);
         }
     }
     public override void OnCollisionEnter(ICollidable collidable)

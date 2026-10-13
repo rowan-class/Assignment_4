@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,7 @@ public class Player : GameObject, IPixelCollidable
         base.Update(gameTime);
         if (!IsActive) { return; }
         CollisionManager.Instance.Move(speed * direction * (float)gameTime.ElapsedGameTime.TotalSeconds, this);
+        direction = Vector2.Zero;
     }
 
     public void OnCollision(ICollidable other)
@@ -40,6 +42,17 @@ public class Player : GameObject, IPixelCollidable
 
     public void OnCollisionEnter(ICollidable other)
     {
+        if (other.IsTrigger && other.layer == Layer.Exit)
+        {
+            if (SceneManager.Instance.SceneM.CurrentState == (int)SceneID.GameScene) {
+                SceneManager.Instance.SceneM.SetState((int)SceneID.HouseScene);
+            }
+            else if (SceneManager.Instance.SceneM.CurrentState == (int)SceneID.HouseScene)
+            {
+                SceneManager.Instance.SceneM.SetState((int)SceneID.GameScene);
+            }
+            //eventually dont have player handle this
+        }
     }
 
     public void OnCollisionExit(ICollidable other)
