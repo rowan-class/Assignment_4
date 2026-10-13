@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameBase.Dialouge;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ public class InputManager
     public event Action<GameAction> ActionPressed;
     public event Action<GameAction> ActionReleased;
     public event Action<GameAction> ActionKeyDown;
+    public InputActionMap inputActionMap { get; private set; } = InputActionMap.Gameplay;
+    public event Action<InputActionMap> OnInputMapChange;
 
     private readonly Dictionary<GameAction, List<Keys>> _actionKeys = new()
     {
@@ -33,6 +36,14 @@ public class InputManager
     };
     //contents can still change. dict itself cannot.
 
+    private readonly Dictionary<GameAction, List<Keys>> _dialougeKeys = new()
+    {
+        [GameAction.ProgressDialouge] = new List<Keys> { Keys.Space, Keys.Enter }
+        //ALLOW FOR MOUSE CLICKING LATER
+    };
+
+    readonly Dictionary<InputActionMap, Dictionary<GameAction, List<Keys>>> ActionMap = new();
+
     /// <summary>
     /// Creates a new InputManager.
     /// </summary>
@@ -40,8 +51,15 @@ public class InputManager
     {
         Keyboard = new KeyboardInfo();
         Mouse = new MouseInfo();
+        ActionMap[InputActionMap.Gameplay] = _actionKeys;
+        ActionMap[InputActionMap.Dialogue] = _dialougeKeys;
+
     }
 
+    public void UpdateActionMap(InputActionMap map) {
+        inputActionMap = map;
+        OnInputMapChange?.Invoke(map);
+    }
     /// <summary>
     /// Updates the state information for the keyboard, mouse, and gamepad inputs.
     /// </summary>
@@ -50,7 +68,8 @@ public class InputManager
     {
         Keyboard.Update();
         Mouse.Update();
-        foreach (var binding in _actionKeys)
+        var startmap = inputActionMap;
+        foreach (var binding in ActionMap[startmap])
         {
             bool wasPressed = false;
             bool isPressed = false;
@@ -68,24 +87,35 @@ public class InputManager
             if (isPressed && !wasPressed)
             {
                 ActionPressed?.Invoke(binding.Key);
+                if (inputActionMap != startmap) {
+                    return;
+                }
             }
             else if (!isPressed && wasPressed)
             {
                 ActionReleased?.Invoke(binding.Key);
+                if (inputActionMap != startmap)
+                {
+                    return;
+                }
             }
             if (isPressed)
             {
                 ActionKeyDown?.Invoke(binding.Key);
+                if (inputActionMap != startmap)
+                {
+                    return;
+                }
             }
         }
         //prevents double firing for input :P
     }
 
-    public void UpdateKeyBindings(GameAction action, List<Keys> newKeys)
+    public void UpdateKeyBindings(InputActionMap map, GameAction action, List<Keys> newKeys)
     {
-        if (_actionKeys.ContainsKey(action))
+        if (ActionMap[map].ContainsKey(action))
         {
-            _actionKeys[action] = newKeys;
+            ActionMap[map][action] = new List<Keys>(newKeys);
         }
     }
 

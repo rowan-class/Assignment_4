@@ -16,7 +16,7 @@ public class DialougeManager
     private DialougeInfo dinfo;
     bool isTyping;
     string temptxt;
-    float SecPerChar;
+    float SecPerChar = 0.05f;
     float typingTimer;
     int visChars;
 
