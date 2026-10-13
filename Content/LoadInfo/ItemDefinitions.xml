@@ -10,7 +10,7 @@
 
 	<Item>
 		<ID>Autopsy Report</ID>
-		<Name>Autopsy Report</Name>
+		<Name>AutopsyReport</Name>
 		<Type>Document</Type>
 		<Sprite>MeowAtlas.meow</Sprite>
 	</Item>

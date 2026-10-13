@@ -23,6 +23,7 @@ public class GameScene : Scene
     GameObject house;
     Vector2 houseEntrance;
     bool enteredBefore;
+    
 
     // references to a tilemap & player if we using either
     public GameScene(ContentManager content) : base(content)
@@ -31,6 +32,8 @@ public class GameScene : Scene
         ground = level.Map;
         Spawns = level.spawns;
         ground.Scale = new Vector2(3, 3);
+        sceneUI = new GameSceneUI(this);
+
 
 
         player = SpawnLevelObjects(content, ground, Spawns);

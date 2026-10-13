@@ -29,7 +29,7 @@ public class HouseScene : Scene
         ground = level.Map;
         Spawns = level.spawns;
         ground.Scale = new Vector2(3, 3);
-
+        sceneUI = new GameSceneUI(this);
 
         player = SpawnLevelObjects(content, ground, Spawns);
         if (player != null) {

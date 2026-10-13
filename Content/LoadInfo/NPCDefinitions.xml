@@ -6,6 +6,7 @@
 		<DialogueIDs>
 			<ID>npc1_intro</ID>
 			<ID>npc1_followup</ID>
+			<ID>npc1_followup2</ID>
 		
 		</DialogueIDs>
 	</NPC>

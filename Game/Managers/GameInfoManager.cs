@@ -76,7 +76,20 @@ public class GameInfoManager
     void HandlePickup(string ID) {
         interactedItems.Add(ID);
         collectedItems.Add(ID);
-        
+        switch (ID) {
+            case ("village_knife_01"):
+                AdvanceDialogue(Character.NPC2);
+                break;
+            case ("house_report_01"):
+                AdvanceDialogue(Character.NPC2);
+                break;
+        }
+        if (GetDialogueIndex(Character.NPC2) >= 2) {
+            while (GetDialogueIndex(Character.NPC1) < 2)
+            {
+                AdvanceDialogue(Character.NPC1);
+            }
+        }
     }
     public int GetDialogueIndex(Character c)
     {
@@ -84,8 +97,11 @@ public class GameInfoManager
         {
             return npcDialogueProgress[c];
         }
-        npcDialogueProgress[c] = 0;
-        return 0;
+        else
+        {
+            npcDialogueProgress[c] = 0;
+            return 0;
+        }
     }
     public void AdvanceDialogue(Character c)
     {

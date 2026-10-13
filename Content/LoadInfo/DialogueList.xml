@@ -33,6 +33,25 @@
 		<Advance>false</Advance>
 		<ID>npc1_followup</ID>
 	</DialogueInfo>
+	
+	<DialogueInfo>
+		<Character>NPC1</Character>
+		<DialogueLines>
+			<Line>
+				<Name>Poro</Name>
+				<Dialogue>ur right. i am murder. ggz freaking ez</Dialogue>
+				<Sprite>PoroAtlas.Poro</Sprite>
+			</Line>
+
+			<Line>
+				<Name>una</Name>
+				<Dialogue> i like food. una una una una una una</Dialogue>
+				<Sprite>PlayerAtlas.Player</Sprite>
+			</Line>
+		</DialogueLines>
+		<Advance>false</Advance>
+		<ID>npc1_followup2</ID>
+	</DialogueInfo>
 
 	<DialogueInfo>
 		<Character>NPC2</Character>
@@ -79,7 +98,15 @@
 			<Line>
 				<Name>blue dude</Name>
 				<Dialogue> truth. i cant belive poro kill. im so tired ive been working on this for like 12 hours straight</Dialogue>
+				<Sprite>WrightAtlas.Wright</Sprite>
+			</Line>
+			<Line>
+				<Name>blue dude</Name>
 				<Dialogue> i dodnt write murder mystery all i do is play through ace attornye instead</Dialogue>
+				<Sprite>WrightAtlas.Wright</Sprite>
+			</Line>
+			<Line>
+				<Name>blue dude</Name>
 				<Dialogue> you did uit congratudaltion i cant topyhe anymore im so tired</Dialogue>
 				<Sprite>WrightAtlas.Wright</Sprite>
 			</Line>
