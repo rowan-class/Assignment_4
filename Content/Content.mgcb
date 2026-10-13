@@ -38,3 +38,17 @@
 /processorParam:Version=3.8.5.1
 /build:Textures/Grass.png
 
+
+#begin Maps/HouseMap.xml
+/copy:Maps/HouseMap.xml
+
+#begin Textures/HouseWalls.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyEnabled=False
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/HouseWalls.png

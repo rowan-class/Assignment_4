@@ -22,6 +22,7 @@ public class NPC : GameObject, ICollidable, IInteractable
     Layer ICollidable.layer { get;} = Layer.Interactable;
 
     public bool CanInteract { get; protected set; } = true;
+    NPCInfo npcInfo;
 
     public string ID => name;
 
@@ -29,10 +30,17 @@ public class NPC : GameObject, ICollidable, IInteractable
     readonly List<DialogueInfo> dialogueInfoList;
 
 
-    public NPC(ContentManager content, string spriteName, string name, Scene owner) : base(content, spriteName, name, owner)
+    public NPC(ContentManager content, string spriteName, string name, Scene owner, NPCInfo info) : base(content, spriteName, name, owner)
     {
         //update sprites, animated sprites and then size in here
+        npcInfo = info;
+        character = npcInfo.character;
+        dialogueInfoList = new();
 
+        foreach (string id in npcInfo.dialogueIDOrder)
+        {
+            dialogueInfoList.Add(Services.GameInfo.dialogueById[id]);
+        }
 
     }
 

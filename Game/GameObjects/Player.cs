@@ -97,9 +97,14 @@ public class Player : GameObject, IPixelCollidable
     {
     }
     public void OnActionMapChanged(InputActionMap map) {
-        if (map != InputActionMap.Gameplay) {
+        if (map != InputActionMap.Gameplay)
+        {
             // disable player movement
             direction = Vector2.Zero;
+            speed = 0f;
+        }
+        else {
+            speed = 100f;
         }
     }
 }

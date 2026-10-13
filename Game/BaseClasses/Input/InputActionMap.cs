@@ -9,7 +9,8 @@ namespace GameBase.Input;
 public enum InputActionMap
 {
     Gameplay,
-    Dialogue
+    Dialogue,
+    Inventory
 }
 
 //its time for input action maps!!

@@ -20,6 +20,8 @@ public enum ItemType
 {
     //useful for catagorizing item typing?
     //not sure if redundant, but the core idea is maybe stacking items
+    Weapon,
+    Document
 }
 public class ItemInfo
 {
@@ -29,12 +31,14 @@ public class ItemInfo
 
     //public string desc { get; private set; }
     public Sprite sprite { get; private set; }
-    public ItemInfo(ItemType type, string n, Sprite s)
+    public string ID { get; private set; }
+    public ItemInfo(ItemType type, string n, Sprite s, string id)
     {
         itemType = type;
         name = n;
         //desc = d;
         sprite = s;
+        ID = id;
     }
 
     public void SetSprite(Sprite sprite)
@@ -73,10 +77,12 @@ public class ItemInfo
                 string name = (string)itemElement.Element("Name");
                 string type = (string)itemElement.Element("Type");
                 string sprite = (string)itemElement.Element("Sprite");
+                string id = (string)itemElement.Element("ID");
 
                 ItemType t = (ItemType) Enum.Parse(typeof(ItemType), type);
                 Sprite s= Services.Sprites.CreateSprite(sprite);
-                itemDefs.Add(new ItemInfo(t, name, s));
+                var x = new ItemInfo(t, name, s, id);
+                itemDefs.Add(x);
             }
         }
 

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,13 +22,14 @@ public class GameInfoManager
     public HashSet<string> collectedItems = new HashSet<string>();
     public HashSet<string> completedDialogue = new HashSet<string>();
     public HashSet<Character> talkedToNPCs = new HashSet<Character>();
+    List<DialogueInfo> definitions;
+    public Dictionary<string, DialogueInfo> dialogueById { get; private set; }=  new();
     public GameInfoManager(ContentManager content)
     {
         EventSystem.OnDialogueComplete += DialogueComplete;
         EventSystem.OnInteract += HandleInteract;
         EventSystem.OnPickup += HandlePickup;
         EventSystem.OnNPCInteract += HandleNPCInteract;
-
     }
 
     private void HandleNPCInteract(Character character)
@@ -35,9 +37,17 @@ public class GameInfoManager
         talkedToNPCs.Add(character);
     }
 
-    public void InitItemList()
+    public void InitItemList(ContentManager content)
     {
+        playerInventory.AddAllItemInfo(ItemInfo.FromFile(content, "LoadInfo/ItemDefinitions.xml"));
         //populate inventorylist items
+    }
+    public void InitDialogueLines(ContentManager content) {
+        definitions = DialogueInfo.FromFile(content, "LoadInfo/DialogueList.xml");
+        foreach (DialogueInfo info in definitions)
+        {
+            dialogueById.Add(info.ID, info);
+        }
     }
     public void Reset() {
         npcDialogueProgress.Clear();

@@ -30,7 +30,7 @@ public class InputManager
         [GameAction.MoveLeft] = new List<Keys> { Keys.A, Keys.Left },
         [GameAction.MoveRight] = new List<Keys> { Keys.D, Keys.Right },
         [GameAction.Interact] = new List<Keys> { Keys.E },
-        [GameAction.ToggleInventory] = new List<Keys> { Keys.I },
+        [GameAction.ToggleInventory] = new List<Keys> { Keys.I},
         [GameAction.Attack] = new List<Keys> { Keys.Space }
         //ALLOW FOR MOUSE CLICKING LATER
     };
@@ -38,8 +38,12 @@ public class InputManager
 
     private readonly Dictionary<GameAction, List<Keys>> _dialogueKeys = new()
     {
-        [GameAction.ProgressDialogue] = new List<Keys> { Keys.Space, Keys.Enter }
+        [GameAction.ProgressDialogue] = new List<Keys> { Keys.Space, Keys.Enter },
         //ALLOW FOR MOUSE CLICKING LATER
+    };
+    private readonly Dictionary<GameAction, List<Keys>> _inventoryKeys = new()
+    {
+        [GameAction.ToggleInventory] = new List<Keys> { Keys.I, Keys.Escape }
     };
 
     readonly Dictionary<InputActionMap, Dictionary<GameAction, List<Keys>>> ActionMap = new();
@@ -53,6 +57,7 @@ public class InputManager
         Mouse = new MouseInfo();
         ActionMap[InputActionMap.Gameplay] = _actionKeys;
         ActionMap[InputActionMap.Dialogue] = _dialogueKeys;
+        ActionMap[InputActionMap.Inventory] = _inventoryKeys;
 
     }
 

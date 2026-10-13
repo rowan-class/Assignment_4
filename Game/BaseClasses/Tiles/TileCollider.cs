@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ public class TileCollider : ICollidable
 
     public bool IsActive { get; private set; } = true;
 
-    public bool ColliderIsActive { get { return TileInfo.IsSolid; } }
+    public bool ColliderIsActive { get { return TileInfo.IsSolid || TileInfo.IsTrigger; } }
 
     public bool IsTrigger { get { return TileInfo.IsTrigger; } }
 

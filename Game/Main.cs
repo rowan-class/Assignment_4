@@ -1,14 +1,16 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameBase.Assets;
+using GameBase.Dialogue;
+using GameBase.Input;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using GameBase.Input;
-using GameBase.Assets;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Numerics;
 using System.Reflection.Metadata;
-using GameBase.Dialogue;
 
 namespace GameBase;
 
@@ -27,7 +29,9 @@ public class Main
         //UIManager = new UIManager(content);
         Services.Initalize(inputManager, sprites, gameInfo, new DialogueManager(inputManager));
         //simplify sprite loading? 
-        gameInfo.InitItemList();
+        gameInfo.InitItemList(content);
+        gameInfo.InitDialogueLines(content);
+        gameInfo.playerInventory.OnEnable();
 
         sceneManager = new SceneManager(content);
     }

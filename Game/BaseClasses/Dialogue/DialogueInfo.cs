@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -17,11 +18,13 @@ public class DialogueInfo
     public string ID;
     public bool advancesProgress;
     int indx = 0;
+
     public DialogueInfo(List<DialogueLine> d, string id, bool advanceafter, Character c) {
         dialogue = d;
         ID = id;
         advancesProgress = advanceafter;
         character = c;
+
     }
     public DialogueLine GetDialogueLine() {
         return dialogue[indx];
