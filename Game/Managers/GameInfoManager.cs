@@ -26,8 +26,15 @@ public class GameInfoManager
         EventSystem.OnDialougeComplete += DialougeComplete;
         EventSystem.OnInteract += HandleInteract;
         EventSystem.OnPickup += HandlePickup;
+        EventSystem.OnNPCInteract += HandleNPCInteract;
 
     }
+
+    private void HandleNPCInteract(Character character)
+    {
+        talkedToNPCs.Add(character);
+    }
+
     public void InitItemList()
     {
         //populate inventorylist items

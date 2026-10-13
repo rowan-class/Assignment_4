@@ -12,6 +12,7 @@ public static class EventSystem
     public static event Action<string> OnInteract;
     public static event Action<string> OnPickup;
     public static event Action<DialougeInfo> OnDialougeComplete;
+    public static event Action<Character> OnNPCInteract;
     //global events that the GameInfoManager can like subscribe to, so a reference isnt needed.
     public static void Interact(string ID) {
         OnInteract?.Invoke(ID);
@@ -23,5 +24,8 @@ public static class EventSystem
     public static void DialougeComplete(DialougeInfo dialougeInfo)
     {
         OnDialougeComplete?.Invoke(dialougeInfo);
+    }
+    public static void NPCInteract(Character c) {
+        OnNPCInteract?.Invoke(c);
     }
 }

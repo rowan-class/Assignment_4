@@ -13,10 +13,11 @@ public class DialougeInfo
     public string ID;
     public bool advancesProgress;
     int indx = 0;
-    public DialougeInfo(List<DialougeLine> d, string id, bool advanceafter) {
+    public DialougeInfo(List<DialougeLine> d, string id, bool advanceafter, Character c) {
         dialouge = d;
         ID = id;
         advancesProgress = advanceafter;
+        character = c;
     }
     public DialougeLine GetDialougeLine() {
         return dialouge[indx];

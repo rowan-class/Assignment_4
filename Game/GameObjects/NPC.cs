@@ -32,7 +32,7 @@ public class NPC : GameObject, ICollidable, IInteractable
     public NPC(ContentManager content, string spriteName, string name, Scene owner) : base(content, spriteName, name, owner)
     {
         //update sprites, animated sprites and then size in here
-        Services.Dialouge.OnDialogueComplete += DialougeComplete;
+
 
     }
 
@@ -41,10 +41,6 @@ public class NPC : GameObject, ICollidable, IInteractable
         base.Update(gameTime);
     }
 
-    public void DialougeComplete(Character c) {
-        if (character != c) { return; }
-
-    }
 
     public void OnCollision(ICollidable other)
     {
@@ -53,16 +49,24 @@ public class NPC : GameObject, ICollidable, IInteractable
 
     public void OnCollisionEnter(ICollidable other)
     {
-        throw new NotImplementedException();
     }
 
     public void OnCollisionExit(ICollidable other)
     {
-        throw new NotImplementedException();
     }
 
     public void Interact(GameObject player)
     {
-        
+        if (CanInteract)
+        {
+            EventSystem.NPCInteract(character);
+            EventSystem.Interact(ID);
+            int index = Services.GameInfo.GetDialogueIndex(character);
+            if (index < dialougeInfoList.Count)
+            {
+                Services.Dialouge.DialougeSetup(dialougeInfoList[index]);
+            }
+        }        
     }
+
 }

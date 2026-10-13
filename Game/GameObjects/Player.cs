@@ -83,7 +83,9 @@ public class Player : GameObject, IPixelCollidable
                     {
                         if (col is IInteractable i)
                         {
+                            //i should yoink my old code and make it interact w whats  closest to the player still
                             i.Interact(this);
+                            if (Services.Input.inputActionMap != InputActionMap.Gameplay) { return; }
                         }
                     }
                     break;
@@ -95,8 +97,9 @@ public class Player : GameObject, IPixelCollidable
     {
     }
     public void OnActionMapChanged(InputActionMap map) {
-        if (map != InputActionMap.Gameplay) { 
-        // disable player movement
+        if (map != InputActionMap.Gameplay) {
+            // disable player movement
+            direction = Vector2.Zero;
         }
     }
 }
