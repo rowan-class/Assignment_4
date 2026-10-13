@@ -103,10 +103,14 @@ public class GameScene : Scene
             player.transform.position = houseEntrance;
         }
         enteredBefore = true;
+        Main.camera.EnableWorldBounds(new Rectangle(0, 0,(int)(ground.Columns * ground.TileWidth),(int)(ground.Rows * ground.TileHeight)));
+
+        Main.camera.LookAt(player.BoxCollider.Center.ToVector2());
     }
     public override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
+        Main.camera.LookAt(player.BoxCollider.Center.ToVector2());
     }
     public override void ExitScene()
     {

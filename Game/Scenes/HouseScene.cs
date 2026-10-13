@@ -80,6 +80,8 @@ public class HouseScene : Scene
         if (player != null) {
             player.transform.position = playerSpawn;
         }
+        Main.camera.DisableWorldBounds();
+        Main.camera.Position = Vector2.Zero;
     }
     public override void Update(GameTime gameTime)
     {

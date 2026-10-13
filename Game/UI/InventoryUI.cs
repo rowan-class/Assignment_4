@@ -45,7 +45,7 @@ public class InventoryUI
         background.AddChild(slotContainer);
         slotContainer.Anchor(Anchor.TopLeft);
         slotContainer.X = Padding;
-        slotContainer.Y = 52;
+        slotContainer.Y = Padding;
         slotContainer.Width = Columns * (SlotSize + Gap) - Gap;
 
     }
@@ -58,7 +58,7 @@ public class InventoryUI
         int rows = Math.Max(1, (count + Columns - 1) / Columns);
 
         slotContainer.Height = rows * (SlotSize + Gap) - Gap;
-        background.Height = 52 + slotContainer.Height + Padding;
+        background.Height = Padding + slotContainer.Height + Padding;
         emptyLabel.Visual.Visible = count == 0;
 
         for (int index = 0; index < count; index++)

@@ -19,7 +19,7 @@ public class Main
     public static Rectangle ScreenBounds;
     public static ContentManager contentManager { get; private set; }
     private SceneManager sceneManager;
-
+    public static MonoGame.Extended.OrthographicCamera camera;
     public Main(ContentManager content)
     {
         contentManager = content;

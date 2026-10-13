@@ -35,7 +35,7 @@
   <Spawns>
     <Spawn type="Player" id="village_player" column="3" row="3" />
     <Spawn type="NPC" definition="NPC1" id="village_npc1" column="5" row="3" />
-    <Spawn type="Pickup" definition="knife" id="village_knife_01" column="7" row="4" />
-    <Spawn type="Pickup" definition="Autopsy Report" id="house_report_01" column="8" row="5" />
+    <Spawn type="Pickup" definition="knife" id="village_knife_01" column="7" row="10" />
+    <Spawn type="Pickup" definition="Autopsy Report" id="house_report_01" column="15" row="5" />
   </Spawns>
 </Tilemap>

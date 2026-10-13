@@ -18,7 +18,7 @@ public class GameSceneUI : SceneUI
     {
         //all scene ui should be created here
         var txt = new Label();
-        txt.Text = "press i invenrtory";
+        txt.Text = " press e interact. spaace to contineu dialigouge press i invenrtory";
         txt.Anchor(Anchor.BottomRight);
         Root.AddChild(txt);
     }
